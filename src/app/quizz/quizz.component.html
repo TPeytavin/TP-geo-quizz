@@ -1,0 +1,17 @@
+<div class="col-md-4" >
+  <input *ngIf="!start" type="button" class="btn" value="Nouvelle Partie" (click)="startQuiz()"/>
+</div>
+
+
+<div class="col-md-8" *ngIf="start">
+  <h5>{{Question.question}}</h5>
+  <div *ngFor="let o of Question.answers">
+    <input type="radio" name="{{Question.id}}" [(ngModel)]="Question.selected" />{{o.name}}
+  </div>
+</div>
+
+<div class="col-md-4" *ngIf="start">
+  <h5>{{currentQuestion+1}}/{{Question.length}}</h5>
+  <input *ngIf="(currentQuestion+1) != Question.length" type="button" class="btn" value="Next" (click)="loadNextQuestion()"/>
+
+</div>
